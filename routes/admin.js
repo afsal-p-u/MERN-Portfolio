@@ -22,15 +22,19 @@ router.post('/register', async(req, res) => {
 
 // admin login 
 router.post("/login", async(req, res) => {
-    const admin = await Admin.findOne({email: req.body.email})
-    if(!admin){
-        res.status(400).send({message: "Not accessable!"})
+    try {
+        const admin = await Admin.findOne({email: req.body.email})
+        if(!admin){
+            res.status(400).send({message: "Not accessable!"})
+        }
+        const passwordCompare = await bcrypt.compare(req.body.password, admin.password)
+        if(!passwordCompare){
+            res.status(400).send({message: "Wrong password!"})
+        }
+        res.status(200).send({message: "admin login successfull...  "})
+    } catch (err) {
+        console.log(err)
     }
-    const passwordCompare = await bcrypt.compare(req.body.password, admin.password)
-    if(!passwordCompare){
-        res.status(400).send({message: "Wrong password!"})
-    }
-    res.status(200).send({message: "admin login successfull...  "})
 })
 
 module.exports = router
