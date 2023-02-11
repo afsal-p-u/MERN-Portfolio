@@ -1,0 +1,44 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
+}
+ 
+li {
+  list-style: none;
+}
+:root{
+  --color-primary: #2d2846;
+  --color-secondary: #eee;
+  --bg-primary: #5a5aa1;
+  --bg-secondary: #3d3d5c;
+}
+
+
+
+/* ---------------scrollbar------------------ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: gray;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2d2846;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2d2846d8;
+}
