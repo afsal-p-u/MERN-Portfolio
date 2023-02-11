@@ -30,5 +30,5 @@ app.use('/api/skills', skillsRoutes)
 app.use('/api/projects', projectRoutes) 
 app.use('/api', contact) 
 
-const port = process.env.PORT | 8080
+const port = process.env.PORT || 8080
 app.listen(port, console.log(`Listening port ${port}...`))
