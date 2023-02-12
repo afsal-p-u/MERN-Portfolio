@@ -10,19 +10,18 @@ router.post('/contact', async(req, res) => {
             port: 465,
             secure: true,
             auth: {
-                user: "portfolioafsalpu@gmail.com",
-                pass: "pjxdsotuhoewhuwu",
+                user: process.env.USER,
+                pass: process.env.PASS,
             },
             tls: {
                 // do not fail on invalid certs
                 rejectUnauthorized: false
             },
         }) 
-        console.log(req.body)
         
         let info = await transporter.sendMail({
-            from:`${req.body.email} <portfolioafsalpu@gmail.com>`,
-            to: "afsalpu07@gmail.com", 
+            from:`${req.body.email} <${process.env.USER}>`,
+            to: process.env.TO, 
             subject: req.body.subject, 
             text: `${req.body.name}:
              
@@ -33,7 +32,6 @@ ${req.body.message}`,
         return res.status(200).send({message: "done"})
     }catch(err) {
         return res.status(401).send({err: err})
-        console.log(err)
     }
 })
 
