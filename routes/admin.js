@@ -8,7 +8,7 @@ const auth = require('../middleware/auth')
 // admin register
 router.post('/register', async(req, res) => {
     try {
-        if(req.body.email !== "afsalpu16@gmail.com"){
+        if(req.body.email !== process.env.TO){
             return res.status(404).send({message: "your not real"}) 
         }
         // const salt = await bcrypt.genSalt(Number(process.env.SALT))
